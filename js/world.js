@@ -242,9 +242,9 @@
     inbox: [905, 300], unpack: [880, 374], pack: [1088, 318]
   };
   /* added plates sit close together, so their chips go beside them (+1 right, -1 left) */
-  /* where each worker tag's leader points, art px: the bench, the dock, the inbox */
-  var SPOT = { inbox: [900, 332], unpack: [935, 347], pack: [1050, 347] };
-  var ADDED = { stack: -1, yield: -1, inbox: 'tag', unpack: 'tag', pack: 'tag' };
+  /* small tags (the yield signal, the worker's steps): where each leader points, art px */
+  var SPOT = { yield: [402, 340], inbox: [900, 332], unpack: [935, 347], pack: [1050, 347] };
+  var ADDED = { stack: -1, yield: 'tag', inbox: 'tag', unpack: 'tag', pack: 'tag' };
 
   var DISTRICTS = [
     {

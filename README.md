@@ -159,7 +159,7 @@ what, and what grows with what), not the exact milliseconds.
 generator's watermark in the corner is covered with water. The cart's roads are
 traced onto the painted paths. Trees, clouds, cubes, docks, the boat and the
 painted envelopes and crates are part of the picture and mean nothing. The Call
-Stack Yard, Yield Signal and the worker's Inbox, Unpacking Bench and Packing Dock tags
+Stack Yard plate and the small Yield Signal, Inbox, Unpacking Bench and Packing Dock tags
 are added (the worker tags are smaller, with a leader to their spot); the no-DOM sign is an added model. Everything drawn live (the
 cart, clock hands, gears, smoke, glows, envelope, chips) is a readout of
 the model at the cart's moment in time.
