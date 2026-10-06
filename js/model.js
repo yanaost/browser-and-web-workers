@@ -400,6 +400,7 @@
     FRAME_MS: FRAME_MS,
     CLONE_MS_PER_MB: CLONE_MS_PER_MB,
     SPAWN_MS: SPAWN_MS,
+    IDLE_FRAME_MS: BASE_FRAME.raf + BASE_FRAME.style + BASE_FRAME.layout + BASE_FRAME.paint,
     simulate: simulate,
     healthyAt: healthyAt,
     longestIn: longestIn,

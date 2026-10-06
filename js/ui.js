@@ -61,7 +61,7 @@
       'inspector', 'btn-run', 'btn-play', 'play-glyph', 'btn-step', 'btn-reset',
       'speed', 'work', 'chunk', 'data', 'nodes', 'mode',
       'v-speed', 'v-work', 'v-chunk', 'v-data', 'v-nodes',
-      'workers2', 'transfer', 'follow', 'labels',
+      'h-chunk', 'workers2', 'transfer', 'follow', 'labels',
       'btn-about', 'about', 'about-close', 'btn-panel', 'tooltip',
       'sheet-handle', 'btn-tune', 'dock', 'dock-tune'
     ].forEach(function (id) { el[id] = $(id); });
@@ -107,8 +107,8 @@
     el['btn-reset'].addEventListener('click', function () { Sim.replayTour(); Sim.run(); paint(true); });
 
     bindRange('speed', 'v-speed', function (v) { Sim.state.speed = v; return v.toFixed(2) + '×'; });
-    bindRange('work', 'v-work', function (v) { Sim.state.workMs = v; return v + ' ms'; });
-    bindRange('chunk', 'v-chunk', function (v) { Sim.state.chunkMs = v; return v + ' ms'; });
+    bindRange('work', 'v-work', function (v) { Sim.state.workMs = v; chunkHint(); return v + ' ms'; });
+    bindRange('chunk', 'v-chunk', function (v) { Sim.state.chunkMs = v; chunkHint(); return v + ' ms'; });
     /* the image slider is logarithmic: 256 KB to 32 MB */
     bindRange('data', 'v-data', function (v) {
       var kb = Math.round(256 * Math.pow(2, v));
@@ -164,6 +164,17 @@
     el.inspector.classList.toggle('open', open);
     el['sheet-handle'].setAttribute('aria-expanded', String(open));
     if (open) el.inspector.scrollTop = 0;
+  }
+
+  /* How many slices the job becomes, and whether one slice plus an idle
+     frame's own work still fits between two vsyncs. */
+  function chunkHint() {
+    var s = Sim.state, h = el['h-chunk'];
+    if (!h) return;
+    var n = Math.ceil(s.workMs / s.chunkMs);
+    var fits = s.chunkMs + Model.IDLE_FRAME_MS <= Model.FRAME_MS;
+    h.textContent = '≈ ' + n + ' slices · ' + (fits ? 'each fits a frame' : 'longer than a frame');
+    h.className = 'field-hint' + (fits ? '' : ' bad');
   }
 
   function bindRange(id, out, fn) {

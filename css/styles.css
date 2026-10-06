@@ -392,6 +392,8 @@ button.primary:hover { filter: brightness(1.07); }
 }
 .field > span b { font-family: var(--mono); font-size: 11px; text-transform: none; color: var(--ink); }
 .field.slider { width: 132px; }
+.field-hint { font-size: 10px; color: var(--ink-faint); white-space: nowrap; }
+.field-hint.bad { color: var(--hot); }
 
 input[type="range"] {
   width: 100%;
