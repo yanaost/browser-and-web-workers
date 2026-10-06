@@ -1,65 +1,47 @@
-# Browser & Web Workers Deep Dive
+# How a Browser Runs Frontend Work
 
-A comprehensive learning project exploring how browsers work and how to use Web Workers for multi-threaded JavaScript.
+An isometric explainer showing how browsers execute JavaScript, handle rendering, and coordinate work across the main thread and Web Workers.
 
-## Structure
+## The Map
 
-### 📚 [browser-internals/](./browser-internals/)
-- Event loop, call stack, and task queues
-- Rendering pipeline and repaint/reflow
-- Memory management and garbage collection
-- JavaScript engine internals
+A vehicle travels through this world, showing how work flows:
 
-### 🔧 [web-workers/](./web-workers/)
-- Dedicated Workers
-- Shared Workers
-- Service Workers
-- Worker communication patterns
+### Main Districts
 
-### 💡 [examples/](./examples/)
-- Working code examples for each concept
-- Interactive demos
-- Performance comparisons
+- **Main Thread Boulevard** (central loop) — Where JavaScript code executes, sequentially
+- **JavaScript Engine Foundry** — Where the JS engine parses and executes code
+- **Event Loop** — The core mechanism that schedules work (tasks, microtasks, rendering)
+- **DOM Plaza** — DOM manipulation and element updates
+- **Style and Layout Mill** — CSS processing and layout calculations
+- **Paint Studio** — Rasterizing elements to pixels
+- **Compositor Arch** — Compositing layers and displaying on screen
+- **Layer Counter Arch** — Managing paint and composite tasks
+- **Network Docks** — Fetching resources (HTTP requests)
+- **Message Port Bridge** — Communication channel between main thread and workers
+- **Worker District** — Where Web Workers run in parallel (off-main-thread)
+  - **Worker Mills** — Individual worker threads executing their own code
+  - **Shared Buffer Yard** — SharedArrayBuffer for direct memory sharing
 
-### 📖 [docs/](./docs/)
-- Deep explanations and diagrams
-- Resource links
+## Project Structure
 
-## Learning Path
+### browser-internals/
+Reference materials on:
+- Event loop order (tasks, microtasks, rendering)
+- Call stack and execution model
+- When repaints and reflows happen
 
-1. **Browser Fundamentals**
-   - How the browser parses HTML/CSS/JS
-   - Event loop and task execution
-   - Rendering and repaint cycles
+### web-workers/
+Reference materials on:
+- Dedicated Workers (one-to-one communication)
+- Web Worker API basics
+- postMessage and message events
 
-2. **Concurrency Patterns**
-   - Single-threaded JavaScript model
-   - Callbacks, Promises, async/await
-   - Microtasks vs macrotasks
+### examples/
+(To be built as stations)
 
-3. **Web Workers**
-   - When and why to use workers
-   - Worker lifecycle and communication
-   - Different worker types
-
-4. **Advanced Topics**
-   - Worker pools and patterns
-   - Performance optimization
-   - Memory management with workers
-
-## Quick Start
-
-```bash
-npm install
-npm run dev  # Start dev server for examples
-```
-
-## Resources
-
-- [MDN: How browsers work](https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work)
-- [MDN: Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)
-- [Tabs and Extensions talk](https://www.youtube.com/watch?v=9Cq60pA0i6Q) - Browser architecture
+### docs/
+Additional explanations and diagrams
 
 ---
 
-Created: 2026-10-06
+Created: 2026-10-06 | Built with [isometric-explainer skill](~/.claude/skills/isometric-explainer)
